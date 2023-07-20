@@ -1,52 +1,16 @@
-# editorVueJS
+## Недостатки этого решения:
 
-This template should help get you started developing with Vue 3 in Vite.
+- Используется один компонент для всего приложения
+- Данные генерируются внутри этого компонента с помощью Faker.js и хранятся в локальном состоянии
+- Пользовательский интерфейс представляет собой выпадающий список для выбора элемента и форму для редактирования значения выбранного элемента.
 
-## Recommended IDE Setup
+**Масштабируемость**: 
+- Все находится в одном компоненте, что может стать проблемой при расширении приложения.
+- Отсутствие разделения ответственности: Компонент занимается и генерацией данных, и отображением интерфейса, и обработкой логики.
+- Отсутствие повторного использования: Невозможно переиспользовать логику генерации данных или компонент интерфейса в другом месте.
+- Недостаточное управление состоянием: При бОльших объемах данных или при необходимости сохранения/загрузки данных может возникнуть потребность в более сложной логике управления состоянием.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+**Способы совершенствования приложения:**
+- Разделение на компоненты: Выделить генерацию данных, интерфейс выбора элемента и интерфейс редактирования в разные компоненты.
+- Вынести логику генерации данных: Создать отдельный модуль или сервис для генерации данных, чтобы уменьшить ответственность компонента.
+- Внедрение стейт-менеджера: Для управления состоянием приложения (например, Vuex) при необходимости масштабировать приложение или добавить сложные функции
